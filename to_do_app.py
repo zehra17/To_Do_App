@@ -1,12 +1,50 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
-<html><head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="qrichtext" content="1" /><style type="text/css">
-p, li { white-space: pre-wrap; }
-</style></head><body style=" font-family:'Consolas'; font-size:10pt; font-weight:400; font-style:normal;">
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Python 3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]</p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Type &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">IPython 8.27.0 -- An enhanced Interactive Python.</p>
-<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
-<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" color:#00ff00;">In [</span><span style=" font-weight:600; color:#00ff00;">1</span><span style=" color:#00ff00;">]:</span> </p></body></html>
+def display_menu():
+    print("\n--- TO-DO LIST ---")
+    print("1. Add a Task")
+    print("2. View Tasks")
+    print("3. Delete a Task")
+    print("4. Exit")
+
+def main():
+    todo_list = []
+
+    while True:
+        display_menu()
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            task = input("Enter a new task: ")
+            todo_list.append(task)
+            print(f"'{task}' has been added to your to-do list.")
+
+        elif choice == "2":
+            if todo_list:
+                print("\nYour Tasks:")
+                for i, task in enumerate(todo_list, 1):
+                    print(f"{i}. {task}")
+            else:
+                print("Your to-do list is empty.")
+
+        elif choice == "3":
+            if todo_list:
+                print("\nYour Tasks:")
+                for i, task in enumerate(todo_list, 1):
+                    print(f"{i}. {task}")
+                try:
+                    task_number = int(input("Enter the number of the task to delete: "))
+                    removed_task = todo_list.pop(task_number - 1)
+                    print(f"'{removed_task}' has been removed.")
+                except (ValueError, IndexError):
+                    print("Invalid task number.")
+            else:
+                print("Your to-do list is empty.")
+
+        elif choice == "4":
+            print("Exiting To-Do List. Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
